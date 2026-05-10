@@ -12,6 +12,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.json.JSONArray
 import java.io.File
 
@@ -50,6 +52,23 @@ class MainMenuActivity : AppCompatActivity() {
             grid.layoutManager = GridLayoutManager(this, 3)
             grid.adapter = ItemAdapter(items) { onItemClicked(it) }
         }
+
+        findViewById<MaterialButton>(R.id.btn_print).setOnClickListener { showReceipt() }
+        findViewById<MaterialButton>(R.id.btn_new_order).setOnClickListener { startNewOrder() }
+    }
+
+    private fun showReceipt() {
+        val body = clickLog.text.toString().ifBlank { "No items in this order yet." }
+        MaterialAlertDialogBuilder(this)
+            .setTitle("Receipt")
+            .setMessage(body)
+            .setPositiveButton("Close", null)
+            .show()
+    }
+
+    private fun startNewOrder() {
+        counters.clear()
+        clickLog.text = ""
     }
 
     private fun onItemClicked(item: Item) {
