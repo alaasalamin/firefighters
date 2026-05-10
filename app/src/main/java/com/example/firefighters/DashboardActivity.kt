@@ -50,6 +50,7 @@ class DashboardActivity : AppCompatActivity() {
         findViewById<MaterialButton>(R.id.btn_add_new_items).setOnClickListener {
             showAddItemDialog()
         }
+        findViewById<View>(R.id.btn_back).setOnClickListener { finish() }
     }
 
     private fun showAddItemDialog() {
