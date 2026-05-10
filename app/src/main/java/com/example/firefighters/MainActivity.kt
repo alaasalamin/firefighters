@@ -21,5 +21,8 @@ class MainActivity : AppCompatActivity() {
         findViewById<android.view.View>(R.id.btn_control_panel).setOnClickListener {
             startActivity(Intent(this, DashboardActivity::class.java))
         }
+        findViewById<android.view.View>(R.id.btn_main_menu).setOnClickListener {
+            startActivity(Intent(this, MainMenuActivity::class.java))
+        }
     }
 }
