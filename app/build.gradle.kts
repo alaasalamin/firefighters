@@ -35,6 +35,10 @@ android {
     }
 }
 
+kotlin {
+    jvmToolchain(11)
+}
+
 dependencies {
     implementation(libs.activity.ktx)
     implementation(libs.appcompat)
